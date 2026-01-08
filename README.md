@@ -1,5 +1,7 @@
 # n8n-nodes-spur
 
+![Spur Logo](icons/spur.svg)
+
 This is an n8n community node for [Spur.us](https://spur.us), an IP intelligence and threat detection service. It lets you get context and threat intelligence for IP addresses in your n8n workflows.
 
 [n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/sustainable-use-license/) workflow automation platform.
