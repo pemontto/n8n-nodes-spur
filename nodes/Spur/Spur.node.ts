@@ -51,21 +51,6 @@ export class Spur implements INodeType {
 						},
 					},
 					{
-						name: 'Get IP Context (Historical)',
-						value: 'getIpContextHistorical',
-						action: 'Get historical IP context',
-						description: 'Get IP context for a specific historical date (Enterprise only)',
-						routing: {
-							request: {
-								method: 'GET',
-								url: '=/context/{{$parameter.ipAddress}}',
-								qs: {
-									dt: '={{$parameter.date.replace(/-/g, "")}}',
-								},
-							},
-						},
-					},
-					{
 						name: 'Get Tag Metadata',
 						value: 'getTagMetadata',
 						action: 'Get tag metadata',
@@ -103,20 +88,7 @@ export class Spur implements INodeType {
 				description: 'The IP address to look up (IPv4 or IPv6)',
 				displayOptions: {
 					show: {
-						operation: ['getIpContext', 'getIpContextHistorical'],
-					},
-				},
-			},
-			{
-				displayName: 'Date',
-				name: 'date',
-				type: 'dateTime',
-				required: true,
-				default: '',
-				description: 'The historical date to look up IP context for',
-				displayOptions: {
-					show: {
-						operation: ['getIpContextHistorical'],
+						operation: ['getIpContext'],
 					},
 				},
 			},
@@ -142,10 +114,24 @@ export class Spur implements INodeType {
 				default: {},
 				displayOptions: {
 					show: {
-						operation: ['getIpContext', 'getIpContextHistorical'],
+						operation: ['getIpContext'],
 					},
 				},
 				options: [
+					{
+						displayName: 'Historical Date',
+						name: 'historicalDate',
+						type: 'dateTime',
+						default: '',
+						description: 'Look up IP context for a specific historical date. Only valid for subscriptions with access to historical records.',
+						routing: {
+							send: {
+								type: 'query',
+								property: 'dt',
+								value: '={{ $value ? $value.replace(/-/g, "").substring(0, 8) : undefined }}',
+							},
+						},
+					},
 					{
 						displayName: 'Simplify Response',
 						name: 'simplify',
