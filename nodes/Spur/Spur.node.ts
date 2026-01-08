@@ -50,6 +50,46 @@ export class Spur implements INodeType {
 							},
 						},
 					},
+					{
+						name: 'Get IP Context (Historical)',
+						value: 'getIpContextHistorical',
+						action: 'Get historical IP context',
+						description: 'Get IP context for a specific historical date (Enterprise only)',
+						routing: {
+							request: {
+								method: 'GET',
+								url: '=/context/{{$parameter.ipAddress}}',
+								qs: {
+									dt: '={{$parameter.date.replace(/-/g, "")}}',
+								},
+							},
+						},
+					},
+					{
+						name: 'Get Tag Metadata',
+						value: 'getTagMetadata',
+						action: 'Get tag metadata',
+						description: 'Get metrics and analysis for a service tag',
+						routing: {
+							request: {
+								method: 'GET',
+								url: '=/metadata/tags/{{$parameter.tag}}',
+							},
+						},
+					},
+					{
+						name: 'Get Token Status',
+						value: 'getTokenStatus',
+						action: 'Get API token status',
+						description: 'Check remaining queries and service tier',
+						routing: {
+							request: {
+								method: 'GET',
+								baseURL: 'https://api.spur.us',
+								url: '/status',
+							},
+						},
+					},
 				],
 				default: 'getIpContext',
 			},
@@ -60,10 +100,37 @@ export class Spur implements INodeType {
 				required: true,
 				default: '',
 				placeholder: 'e.g., 8.8.8.8',
-				description: 'The IP address to look up',
+				description: 'The IP address to look up (IPv4 or IPv6)',
 				displayOptions: {
 					show: {
-						operation: ['getIpContext'],
+						operation: ['getIpContext', 'getIpContextHistorical'],
+					},
+				},
+			},
+			{
+				displayName: 'Date',
+				name: 'date',
+				type: 'dateTime',
+				required: true,
+				default: '',
+				description: 'The historical date to look up IP context for',
+				displayOptions: {
+					show: {
+						operation: ['getIpContextHistorical'],
+					},
+				},
+			},
+			{
+				displayName: 'Tag',
+				name: 'tag',
+				type: 'string',
+				required: true,
+				default: '',
+				placeholder: 'e.g., NORDVPN, OXYLABS_PROXY',
+				description: 'The service tag to get metadata for',
+				displayOptions: {
+					show: {
+						operation: ['getTagMetadata'],
 					},
 				},
 			},
@@ -75,7 +142,7 @@ export class Spur implements INodeType {
 				default: {},
 				displayOptions: {
 					show: {
-						operation: ['getIpContext'],
+						operation: ['getIpContext', 'getIpContextHistorical'],
 					},
 				},
 				options: [

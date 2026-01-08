@@ -25,6 +25,12 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
   - Risk indicators (proxy, VPN, tunnel, geo mismatch, etc.)
   - VPN/Proxy service identification
 
+- **Get IP Context (Historical)**: Look up IP context for a specific historical date (Enterprise plans only)
+
+- **Get Tag Metadata**: Get metrics and analysis for a service tag (e.g., `NORDVPN`, `OXYLABS_PROXY`)
+
+- **Get Token Status**: Check remaining API queries and service tier
+
 ## Credentials
 
 You need a Spur API token to use this node.
