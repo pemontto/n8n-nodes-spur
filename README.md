@@ -1,6 +1,6 @@
-# n8n-nodes-spur
+<img src="https://raw.githubusercontent.com/pemontto/n8n-nodes-spur/main/icons/spur.svg" width="120" alt="Spur Logo" />
 
-![Spur Logo](icons/spur.svg)
+# n8n-nodes-spur
 
 This is an n8n community node for [Spur.us](https://spur.us), an IP intelligence and threat detection service. It lets you get context and threat intelligence for IP addresses in your n8n workflows.
 
