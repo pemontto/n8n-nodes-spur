@@ -38,8 +38,8 @@ export class SpurApi implements ICredentialType {
 
 	test: ICredentialTestRequest = {
 		request: {
-			baseURL: 'https://api.spur.us/v2',
-			url: '/context/8.8.8.8',
+			baseURL: 'https://api.spur.us',
+			url: '/status',
 			method: 'GET',
 		},
 	};
