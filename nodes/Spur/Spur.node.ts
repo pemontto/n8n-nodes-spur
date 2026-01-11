@@ -133,11 +133,18 @@ export class Spur implements INodeType {
 						},
 					},
 					{
-						displayName: 'Simplify Response',
-						name: 'simplify',
+						displayName: 'Use MaxMind Geo',
+						name: 'mmgeo',
 						type: 'boolean',
 						default: false,
-						description: 'Whether to return a simplified response with key fields only',
+						description: 'Whether to return MaxMind GeoLite2 geolocation data instead of Spur geolocation data',
+						routing: {
+							send: {
+								type: 'query',
+								property: 'mmgeo',
+								value: '={{ $value ? 1 : undefined }}',
+							},
+						},
 					},
 				],
 			},
