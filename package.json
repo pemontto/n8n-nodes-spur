@@ -1,6 +1,6 @@
 {
     "name": "n8n-nodes-spur",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "Get IP context and threat intelligence from Spur.us",
     "license": "MIT",
     "homepage": "https://github.com/pemontto/n8n-nodes-spur",
