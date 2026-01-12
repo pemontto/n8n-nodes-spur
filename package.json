@@ -12,7 +12,8 @@
         "security"
     ],
     "author": {
-        "name": "pemontto"
+        "name": "pemontto",
+        "email": "pemontto@gmail.com"
     },
     "repository": {
         "type": "git",
